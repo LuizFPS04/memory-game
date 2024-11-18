@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #685586;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    background: #9775cf;
+    padding: 40px 60px;
+}
+
+h2 {
+    font-size: 3em;
+    color: #FFF;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.restart {
+    padding: 15px 20px;
+    color: #685586;
+    background: #FFF;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.restart:hover {
+    color: #FFF;
+    background: #685586;
+    transform: scale(1.05);
+}
+
+.jogo {
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    background: #FFF;
+    transform: rotateY(180deg);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.item.virarCarta {
+    transform: rotateY(0deg);
+}
+
+.item.cartaIgual {
+    background: #90EE90;
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+.item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #b7a3d8;
+    transition: 0.5s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.cartaIgual:after,
+.virarCarta:after {
+    transform: rotateY(180deg);
+}
+
+@keyframes shake {
+    0% { transform: rotateY(180deg) translateX(0); }
+    25% { transform: rotateY(180deg) translateX(-10px); }
+    50% { transform: rotateY(180deg) translateX(10px); }
+    75% { transform: rotateY(180deg) translateX(-10px); }
+    100% { transform: rotateY(180deg) translateX(0); }
+}
+
+.item.cartaErrada.virarCarta {
+    animation: none;
+    background: #b7a3d8;
+}
