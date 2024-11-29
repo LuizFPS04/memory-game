@@ -99,6 +99,11 @@ h2 {
     transform: rotateY(180deg);
 }
 
+span {
+    color: #FFF;
+    font-size: 2em;
+}
+
 @keyframes shake {
     0% { transform: rotateY(180deg) translateX(0); }
     25% { transform: rotateY(180deg) translateX(-10px); }
